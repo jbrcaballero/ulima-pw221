@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagina de Prueba - Turismo</title>
+</head>
+<body>
+    <!-- Opciones de encabezado: h1-h6 -->
+    <h1>ULima Travel SAC</h1>
+    <h2>Sobre nosotros</h2>
+    <!-- Puedo agregar texto a traves del elemento parrafo -->
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+    <!-- Un salto de linea. Observe el resultado si retira el elemento-->
+    <br/>
+    <!-- Para colocar el texto en negrita podemos utilizar <strong> o <b> -->    
+      <strong>
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.      
+      </strong>
+      <div>
+        <!-- Podemos agregar una imagen-->
+        <img src="images/our-team.jpg"/>
+      </div>
+    </p>
+  <h2>Nuestra misión</h2>
+  <!-- Elemento blockquote: Nos puede permitir darle un formato especial al texto -->
+      <blockquote>
+        Aquí nuestra misión.
+      </blockquote>
+  <h2>Nuestros valores</h2> 
+  <!-- Listas ordenadas -->
+  <ol>
+    <!-- Cada elemento de la lista en su propio elemento <li> -->
+    <li>Integridad</li>
+    <li>Responsabilidad</li>
+    <li>Respeto</li>
+  </ol>
+
+  <h2>Nuestros destinos</h2>
+  <!-- Listas No Ordenadas-->
+  <ul>
+    <!-- Utilizamos los mismos elementos que para listas ordenadas -->
+    <li>
+      <!-- Configuraremos un hipervinculo que nos lleva a la pagina correspondiente-->
+      <a href="cities/lima.html">Lima</a>
+    </li>
+    <li>
+      <a href="cities/arequipa.html">Arequipa</a>
+    </li>
+    <li>
+      <!-- Este link nos llevara a una ventana nueva -->
+      <a href="cities/cusco.html" target="_blank" rel="noopener noreferrer">Cusco</a>      
+    </li>
+  </ul>
+  <h2>Próximas salidas</h2>
+  <!-- Tablas -->
+  <table>
+    <!-- Podemos agregar una descripcion / titulo de la tabla -->
+    <caption> Salidas abril 2022 </caption>
+    <!-- Cabecera de tabla (opcional): Podemos darle un formato especifico -->
+    <thead>
+      <tr>
+        <!-- Un elemento <th> por cada columna de la cabecera -->
+        <th>Ciudad</th>
+        <th>Tipo Servicio</th>
+        <th>Precio</th>
+      </tr>
+    </thead>
+    <!-- Cuerpo de la tabla, colocaremos los registros con datos-->
+    <tbody>
+      <!-- Cada fila (row) asociada a un elemento <tr> -->
+      <tr>
+        <!-- Dividimos la fila y agregamos cada dato con un elemento <td> -->
+        <td>Lima</td>
+        <td>Estándar</td>
+        <td>US$ 120</td>
+      </tr>
+      <tr>
+        <td>Arequipa</td>
+        <td>Premium</td>
+        <td>US$ 370</td>
+      </tr>
+      <tr>
+        <td>Cusco</td>
+        <td>Estándar</td>
+        <td>US$ 600</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

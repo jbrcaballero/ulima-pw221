@@ -1,0 +1,97 @@
+/* Selector por ID: solo el elemento de ID "tituloCentral" */
+#mainTitle {
+  /* Aqui el color se especifica en formato hexadecimal */
+  background-color: #b5a26e;
+  /* Tamaño de fuente: en "em" -> relativa al tamaño de fuente del contenedor */
+  font-size: 2.5em;
+  /* Muestra el texto en cursiva */
+  font-style: italic;
+  /* Texto centrado */
+  text-align: center;
+  /* Texto subrayado */
+  text-decoration: underline;  
+  font-family: Arial, sans-serif;
+}
+
+/* Selectores de tipo: Selecciona todos los elementos de ese estilo */
+h1 {
+  background-color: #b5a26e;
+  font-size: 3.5em;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+
+body {
+  /*  Color de fondo */
+  /*  En este caso se especifica directamente con el nombre (peru) */
+  background-color: peru
+}
+
+h2 {
+  /* Familia de fuentes, se aplicará la primera que esté instalada */
+  font-family: Arial, Helvetica, sans-serif;
+  /* Aquí se selecciona el color con valores rgb (rojo, verde, azul) */
+  background-color: rgb(130, 154, 52);
+  /* Borde con lineas punteadas */
+  border: dotted;
+  /*Color del borde */
+  border-color: blanchedalmond;
+  font-size: 2em;
+}
+
+/* Afectará a los elementos de listas ordenadas y no-ordenadas */
+li {
+  font-family: 'Lucida Sans', sans-serif;
+  font-weight: bold;
+  font-size: 1.5em
+}
+
+
+/* Selector de clase: elementos que tengan la clase "parrafo" */
+.paragraph {
+  font-family: 'Trebuchet MS', sans-serif;
+  /* Texto justificado */
+  text-align: justify;
+  font-size: 1.5em;
+}
+
+.image-city{
+  /* Permite mostrar la imagen con un borde redondeado*/
+  border-radius: 20%;
+  
+  /* Para poder centrar la imagen */
+  display: block;
+  margin: auto;
+  
+  /* La imagen se redimensionará para ocupar el 100% cuando el ancho no sea suficiente */
+  max-width: 100%;
+}
+
+/* Para la imagen de la página prinipal */
+.image-main{
+  /* Para poder tener la imagen totalmente redondeada */
+  border-radius: 50%;
+  
+  /* Para poder centrar la imagen */
+  display: block;
+  margin: auto;
+  
+  max-width: 100%;
+}
+
+/* Para la imagen de la página de cada ciudad */
+figcaption {
+  /* Color de texto negro, letra cursiva y centrado*/
+  color: black;
+  font-style: italic;
+  text-align: center;
+
+  font-size: 1.75em;
+  
+  /* Controla la distancia entre el elemento y su borde (interior) */
+  padding: 1em;
+
+  /* Espacio fuera del borde del elemento (exterior) */
+  margin: 1em;  
+}

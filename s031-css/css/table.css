@@ -1,0 +1,28 @@
+.table {
+  /* Se dibujará una línea recta */
+  border: solid;  
+  /* Establecemos una medida relativa para el ancho del borde */
+  border-width: 0.2em;
+  font-family: Arial, Helvetica, sans-serif;
+  /* Valor relativo. Absoluto: Probar con "large" */
+  font-size: larger;
+  /* Para controlar el ancho de la tabla */
+  width: 60%;
+  /* Los bordes en la tabla serán compartidos, no se separarán */
+  border-collapse: collapse;
+  /* El navegador calcula el margen: centrará la tabla*/
+  margin: auto
+}
+
+.table-header {
+  /* Para manejar el espaciado entre las letras de la cabecera */
+  letter-spacing: 0.1em;
+  font-family:Impact, sans-serif;
+  background-color: gray;    
+}
+
+.table-row {
+  border: solid;
+  font-size: 1.1em;
+  text-align: center;
+}
