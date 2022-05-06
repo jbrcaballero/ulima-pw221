@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <!-- Es posible colocar codigo Javascript directamente en el doc HTML-->
+  <script>
+    console.log("Hola Peru");
+    //Funcion regular en Javascript
+    student = {firstName: "Juan", lastName: "Perez", age: 22};
+    
+    //Funcion de prueba: Permite evaluar el resultado del llamado a otras funciones
+    function testFunction(){
+      showResult(legalAge(student));
+    }
+
+    //Permite mostrar el valor dado como dato en la caja de resultados
+    function showResult(result){
+      //Obtenemos una referencia al elemento HTML con ese ID
+      //Podemos modificar sus atributos
+      document.getElementById("txtResult").value = result;
+    }
+  </script>
+  <!-- Recomendable: Trabajar con archivos externos -->
+  <script src="js/index.js"></script>
+  <title>Prueba Javascript</title>
+</head>
+
+<body>
+  <div class="container m-4 p-4 border">
+    <h1>Prueba Javascript</h1>
+    <div class="form-group">
+      <label for="txtResult">Resultado</label>
+      <textarea class="form-control" id="txtResult"></textarea>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary mt-4" onclick="testFunction()">Probar</button>
+    </div>
+  </div>
+</body>
+</html>
