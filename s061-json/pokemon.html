@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="js/pokemon.js"></script>
+  <title>Prueba Pokemon API</title>
+
+</head>
+<body>
+  <div class="container m-4 p-4 border">
+    <div class="row" id="divTitle">
+      <h1>Prueba Pokemon API</h1>
+    </div>
+    <div class="row mt-3">
+      <div class="form-group">
+        <label for="txtPokemonName">Nombre Pokemon</label>
+        <input type="text" id="txtPokemonName" class="form-control mt-2">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary mt-4" id="btnShow">Mostrar Datos</button>
+      </div>
+    </div>
+  </div>
+  <div id="divPokemon" class="container m-4 p-4 border d-none" >
+    <div class="row mt-3">
+        <div class="col">
+          <span><strong>Nombre:</strong></span>
+          <span id="lblName"></span>
+        </div>
+        <div class="col">
+          <span><strong>Peso:</strong></span>
+          <span id="lblWeight"></span>
+        </div>
+        <div class="col">
+          <div class="row"></div>
+          <span><strong>Habilidades:<br></strong></span>
+          <span id="lblSkills"></span>
+        </div>
+        <div class="col">
+          <img id="imgPokemon">
+        </div>
+      </div>
+  </div>
+</body>
+</html>

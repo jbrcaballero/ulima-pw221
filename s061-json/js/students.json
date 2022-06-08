@@ -1,0 +1,16 @@
+[  
+  {  
+     "name":"arun",
+     "gender":"Male",
+     "physics":88,
+     "maths":87,
+     "english":78
+  },
+  {  
+     "name":"rajesh",
+     "gender":"Male",
+     "physics":96,
+     "maths":100,
+     "english":95
+  }
+]

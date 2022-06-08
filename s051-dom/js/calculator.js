@@ -9,6 +9,7 @@ const main = _ => {
   
   buttonAdd.addEventListener("click", getResult);
   butonMultiply.addEventListener("click", getResult);
+  buttonClean.addEventListener("click", cleanText);
 }
 //Alternativa a "document.load
 window.addEventListener("load", main);
@@ -23,7 +24,6 @@ const getResult = event =>{
   let result = compute(operation, operators);
   showAnswer(result);
 }
-
 
 //Permite obtener la operacion realizada (Usa el texto del boton)
 const getOperation = event => {
@@ -62,3 +62,17 @@ const showAnswer = result => {
   document.getElementById("txtResult").innerHTML = result + "\n" + prevText;
 }
 
+//Permite quitar el texto en los controles
+const cleanText = _ => {
+  /*
+    Permite obtener una lista con los elementos que cumple el criterio.
+    Usaremos un selector por id (podriamos usar un selector de clase, por ejemplo)
+  */
+  let inputControls = document.querySelectorAll("#txtValue1, #txtValue2, #txtResult");
+  
+  /*
+    forEach recibe como parametro una funcion que se aplicara a cada elemento.
+    No es necesario un bucle.
+  */
+  inputControls.forEach(control => control.value = "");  
+}
