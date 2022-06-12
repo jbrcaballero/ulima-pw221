@@ -1,34 +1,33 @@
 import logo from './logo.svg';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.css'
 
+//Importaciones para utilizar los componentes que hemos creado
+import Greeting1 from './components/Greeting1';
+import Greeting2 from './components/Greeting2';
+import ProjectInfo from './components/ProjectInfo';
+import ClickCounter from './components/ClickCounter';
+
+/*
+  Para definir un componente de React solamente necesitamos una funcion
+  que retorne un elemento JSX
+*/
 const Greeting = _ => {
   return (
+    //Debe ser un solo elemento (o manejar un contenedor: div, React.Fragment)
     <h2>Hola mundo</h2>
   );
 }
-
-const Greeting1 = (props) => {
-  let name = props.name;
-  return (
-    <h2>Hola {name}</h2>
-  );
-}
-
-const Greeting2 = ({name, city}) => {
-  return(
-    <h2>Hola {name}. Saludos desde {city}</h2>
-  );
-}
-
 
 function App() {
   let valor = new Date().toLocaleDateString();
   return (
     <div className="App">        
       <header className="App-header">
+        {/*Renderizado simple: componente en el mismo archivo*/}
         <Greeting />
+        {/*Uso de props*/}
         <Greeting1 name="Carlos" />
+        {/*Se trabaja con 2 props: name y city*/}
         <Greeting2 name="Alejandra" city="Chiclayo" />
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -42,6 +41,10 @@ function App() {
         >
           Learn React
         </a>
+        {/*Contador de clics que hace uso de useState*/}
+        <ClickCounter />
+        {/*Muestra la información de proyetos haciendo uso de useState y useEffect*/}
+        <ProjectInfo id="3" />
       </header>
     </div>
   );
