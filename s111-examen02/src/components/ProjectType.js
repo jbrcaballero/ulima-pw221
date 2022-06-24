@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
 const ProjectType = _ => {
-  const technologies = {frontend: ['HTML', 'CSS', 'Javascript'], backend: ['Node', 'Express', 'MongoDB']};  
+  const technologies = {frontend: ['HTML', 'CSS', 'Javascript'], backend: ['Node', 'Express', 'MongoDB'],
+                        fullstack: ['HTML', 'CSS', 'Node', 'Express']};  
   const styles = {selected: 'btn btn-success mx-2', notSelected: 'btn btn-light mx-2'};
   
   //Uso del hook useRef: Me permite vincular una variable a un elemento de la pagina (lo vincularemos al botón por defecto: FrontEnd)
@@ -35,6 +36,7 @@ const ProjectType = _ => {
           {/* El atributo ref nos permite vincularlo con la variable mediante el hook useRef */}
           <button ref={defaultButton} className={styles.selected} data-project-type='frontend' onClick={changeTechnologies}>FrontEnd</button>
           <button className={styles.notSelected} data-project-type='backend' onClick={changeTechnologies}>BackEnd</button>     
+          <button className={styles.notSelected} data-project-type='fullstack' onClick={changeTechnologies}>Full Stack</button>     
         </div>
       </div>
       <div className='row m-3'>

@@ -8,6 +8,10 @@ const ButtonBar = ({ language }) => {
         "EN":{
             save: "Save",
             cancel: "Cancel"
+        },
+        "POR":{
+            save: "Salvar",
+            cancel: "Cancelar"
         }
     };
 

@@ -18,7 +18,7 @@ function App() {
             <ProjectType />
           </div>
           <div className='row'>
-            <ButtonBar language='ES'/>
+            <ButtonBar language='POR'/>
           </div>        
         </div>
         <div className='row mt-3'>
