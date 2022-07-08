@@ -41,4 +41,48 @@ Cuando el proyecto inicia, es recomendable la creación de una base de datos ind
 
 sequelize-cli permite la creación de modelos, los cuales se relacionarán a tablas de nuestro esquema de base de datos. La creación de las tablas y modificaciones de datos pueden realizarse sin necesidad de trabajar con código SQL. Para poder crear un modelo, debemos especificar su nombre y el listado de atributos que tiene separado por comas. El siguiente comando permite crear el modelo *Employee* con los atributos *id*, *first_name*, *salary* y *hire_date*:
 
-    sequelize-cli 
+    sequelize model:generate --name Employee --attributes id:integer,name:string,salary:float,hireDate:date
+
+## Ejecutar Migración
+
+Tal como se observa, la creación del modelo crea un nuevo archivo en la carpeta *models* (correspondiente al modelo que acabamos de crear) y un archivo en la carpeta *migrations*. Para poder realizar la creación de la tabla asociada podemos realizar una migración:
+
+    sequelize db:migrate
+
+Esta migración realizará la creación de las tablas, como podremos comprobar en nuestra base de datos.
+
+## Crear Seed
+
+Los archivos *seed* permiten, por ejemplo, la inserción de regisrtos de prueba. Podemos utilizarlos para nuestra carga inicial de datos. El comando siguiente creará un nuevo archivo *seed* en nuestra carpeta *seeders*:
+
+    sequelize seed:generate --name demo-employees
+
+En el archivo generado podemos implementar los métodos *up* y *down* para definir las acciones que se realizarán al ejecutar la migración (para crear los registros) o revertirla (eliminando los registros) respectivamente.
+
+Por ejemplo, este bloque de código insertará dos registros de prueba:
+
+    await queryInterface.bulkInsert('Employees', [{
+        id: 100,
+        name: "Steven King",
+        salary: 24000,
+        hireDate: new Date(2019, 1, 1),
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        id: 101,
+        name: "Neena Kochhar",
+        salary: 17000,
+        hireDate: new Date(2019, 1, 1),
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }
+    ]);
+
+Una vez finalizado el archivo podemos ejecutarlo con el siguiente comando:
+
+    sequelize db:seed:all
+
+De esta forma se ejecutarán todos los archivos seed pendientes. En caso se quiera ejecutar uno específico se podrá realizar de esta forma:
+
+    sequelize db:seed --seed nombre_archivo.js
