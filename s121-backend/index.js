@@ -2,7 +2,7 @@
 //Para utilizar 'import' modificamos package.json considerando "type": "module".
 
 //Para la parte web utilizaremos Express
-//Para incluirlo en un proyecto nuevo: npm install postgres
+//Para incluirlo en un proyecto nuevo: npm install express
 import express from 'express';
 
 //Paquete para poder utilizar Postgres
@@ -14,11 +14,19 @@ import pg from 'pg';
 //Para incluirlo en un proyecto nuevo: npm install sequelize
 import { Sequelize } from 'sequelize';
 
+import cors from 'cors';
+
 //Creamos una nueva aplicación utilizando Express
 const app = express();
 //Variable que utilizaremos para iniciar la aplicación (importante que el puerto
 //no esté ocupado)
 const PORT = 5000;
+
+
+app.use(cors());
+
+
+
 /*
 app.listen permite iniciar el servidor y empieza a "escuchar" (esperar 
 conexiones) en el puerto indicado.
@@ -64,17 +72,17 @@ el nombre que le queremos dar al parámetro al definir la ruta.
 En el ejemplo mostrado, se coloca como ruta '/saludo/:nombre'. Ello quiere
 decir que el texto que vaya de la cadena '/saludo' se considerará como el 
 valor del parámetro nombre.
-Por ejemplo, si realizamos el llamado a 'http://localhost:5000/saludo/Juan'.el
+Por ejemplo, si realizamos el llamado a 'http://localhost:5000/greetings/Juan'.el
 valor del parámetro 'name' será 'Juan' con lo que podremos acceder a ese valor
 a través del objeto req.params, el cual contendrá todos los parámetros 
 asociados a la solicitud
 */
-app.get('/saludo/:name', (req, res) => {
+app.get('/greetings/:name', (req, res) => {
     res.send(`<h1>Hola ${req.params.name}</h1>`);
 });
 
 //También podemos recibir más de un parámetro como en este ejemplo
-app.get('/saludo/:firstName/:lastName', (req, res) => {
+app.get('/greetings/:firstName/:lastName', (req, res) => {
     res.send(`Hola ${req.params.lastName}, ${req.params.firstName}`);
 });
 
@@ -184,14 +192,14 @@ Para obtener la información de los proyectos realizaremos un query a la tabla
 PROJECTS (el script de creación se encuentra en la carpeta 'database')
 */
 app.get('/api/v1/projects', (req, res) => {
-    const sql = 'SELECT * FROM PROJECTS';
+    const sql = 'SELECT * FROM PROJECT';
     pool.query(sql, (error, results) => {
         if(error){
             //throw(error);
             res.status(500).send(`{message: Error: ${error.message}}`);
         }else{
             res.json(results.rows);
-        }        
+        }
     });
 });
 
@@ -201,7 +209,7 @@ uno de ellos se identifica con un número secuencial: $1, $2, $3.
 El método query recibe la sentencia SQL (en la que debe especificares la
 posición de los parámetros) y un array con los valores de cada parámetro (en el
 mismo orden.
-    */
+*/
  
 app.post('/api/v1/projects', (req, res) => {
     const { id, name, description} = req.body;
@@ -216,6 +224,8 @@ app.post('/api/v1/projects', (req, res) => {
 
 
 /*
+Segunda forma: Sequelize
+
 URL que podemos utilizar para configurar la conexión. Varía por cada motor de BD.
 Para el caso de Postgres será:
     postgres://{usuario}:{password}@{host}:{puerto}/{nombreBD}
@@ -227,11 +237,17 @@ con nuestra BD en función a los parámetros de la URL definida.
 Como alternativa, podemos darle los parámetros independientemente:
 
 */
-const sequelize1 = new Sequelize(url);
+const sequelize = new Sequelize(url);
+
+/*
+También es posible obtener una nueva instancia de Sequelize dando los
+parámetros directemente: base de datos, usuario, password. En el último
+parámetro especificamos el host y el dialecto (postgres en nuestro caso)
 
 const sequelize = new Sequelize('postgres', 'postgres', 'password', {
     host: 'localhost', dialect: 'postgres'
 });
+*/
 
 //
 await sequelize.authenticate();
@@ -250,10 +266,39 @@ let Project = sequelize.define('project',{
 
 /*
 Para poder hallar todas las tuplas de la tabla utilizamos 'findAll'
+
 */
 app.get('/api/v2/projects', (req, res) => {
-    Project.findAll().then(results => {
+    //Filtrar por nombre: /api/v2/projects?name=Proyecto1
+    if(req.query.name){
+        Project.findOne({ where: { name: req.query.name } }).then(results => {
+            res.send(results);
+        });        
+    }else{
+        Project.findAll().then(results => {
+            res.send(results);
+        });
+    }
+});
+
+//Filtro con parámetro (por id)
+app.get('/api/v2/projects/:id', (req, res) => {
+    Project.findByPk(req.params.id).then(results => {
         res.send(results);
     });
 });
 
+app.post('/api/v2/projects', (req, res) => {
+    Project.create(req.body).then( _ => {
+        res.send("Creado correctamente");
+    });
+});
+
+const ProjectType = sequelize.define('projectType', {
+    id: {type: Sequelize.INTEGER, primaryKey: true},
+    name: Sequelize.STRING
+});
+
+//Para poder crear las tablas en función a los modelos definidos
+//(force: true permite crear nuevamente las tablas)
+//sequelize.sync({ force: true });

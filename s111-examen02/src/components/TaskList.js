@@ -3,8 +3,10 @@ import 'bootstrap/dist/css/bootstrap.css'
 const TaskList = ({ tableStyle }) => {  
   const[taskList, setTaskList] = useState([]);
   const styleList = {Dark: 'table table-dark', Light: 'table'}
-  const loadTasks = async () => {
-    const response = await fetch('https://task-node-api-rest.herokuapp.com/tasks');
+  const loadTasks = async () => {        
+    const response = await fetch('http://localhost:5000/tasks');
+    //Para llamado remoto comentar la línea anterior u descomentar la siguiente:
+    //const response = await fetch('https://task-node-api-rest.herokuapp.com/tasks');
     const data = await response.json();
     setTaskList(data);
   }
